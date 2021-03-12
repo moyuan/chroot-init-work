@@ -1,0 +1,47 @@
+## ChangeRoot Workspace Init
+
+### Software Installation list
+	0. zsh
+	1. cmake 3.18
+	https://cmake.org/download/
+	cmake-3.18.4-Linux-x86_64.tar.gz
+	2. gcc9
+	3. clang+llvm
+	https://releases.llvm.org/download.html
+	clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+	4. ccls
+		1. add /lib, gcc lib and cmake lib to CMAKE_PATH
+		2. cmake -H. -BRelease -DCMAKE_CXX_COMPILER=/usr/local/gcc/bin/g++ -DCMAKE_PREFIX_PATH="/root/clang_llvm;/usr/local/gcc/;/lib"
+		3. cmake --build Release --target install
+	5. eclipse
+	6. ripgrep
+	7. dotfiles
+		1. vimrc
+		2. zshrc
+	8. vim8.x with python3 and lua support
+		1. ./configure --with-features=huge --enable-cscope --enable-multibyte \
+		--enable-rubyinterp --enable-python3interp \
+		--with-python3-config-dir=/usr/lib/python3.7/config-3.7m-x86_64-linux-gnu \
+		--enable-fail-if-missing --with-python3-command=python3.7 \
+		--enable-luainterp
+	9. fzf and fzf.vim(via .vimrc)
+	10. coc.nvim
+		1. language server config
+{
+	"languageserver": {
+    "ccls": {
+      "command": "/usr/local/bin/ccls",
+      "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+      "rootPatterns": [".ccls-root", "compile_commands.json"],
+      "initializationOptions": {
+        "cache": {
+          "directory": ".ccls-cache"
+        },
+        "client": {
+          "snippetSupport": true
+        }
+      }
+    }
+  }
+}
+	11. node10+
